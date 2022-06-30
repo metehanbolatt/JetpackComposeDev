@@ -27,7 +27,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Conversation(messages = SampleData.conversationSample)
+            var shouldShowOnboarding by remember { mutableStateOf(false) }
+            if (shouldShowOnboarding) OnboardingScreen {} else Conversation(messages = SampleData.conversationSample)
         }
     }
 }
